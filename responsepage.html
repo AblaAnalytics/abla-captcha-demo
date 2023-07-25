@@ -1,0 +1,22 @@
+<!-- newpage.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Verification Result</title>
+</head>
+<body>
+  <div id="responseDisplay"></div>
+  <script>
+    // Retrieve the status query parameter from the URL
+    const params = new URLSearchParams(window.location.search);
+    const status = params.get("status");
+
+    // Display different messages based on the status value
+    if (status === "200") {
+      document.getElementById("responseDisplay").textContent = "Captcha verification succeeded!";
+    } else {
+      document.getElementById("responseDisplay").textContent = "Captcha verification failed!";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Abla Captcha Signup Form Demo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="frontend/public/custom-style.css" />
+    <link rel="stylesheet" href="frontend/public/captcha-style.css" />
+    <script src="frontend/public/captcha-script.js"></script>
+  </head>
+  <body>
+    <main class="form-container">
+      <form id="signupForm">
+        <h2>Abla Captcha</h2>
+        <h2>Sign Up Demo</h2>
+        
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email address"
+            required
+          />
+       
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            required
+          />
+        
+          <div>  
+          <div id="abcaptcha" class="dark-mode" data-sitekey="75NW5XJB00YEKWAYUQXCK7TN"></div>
+        </div>
+        <button class="button" id="submitButton" onclick="handleS()">Sign Up</button>
+      </form>
+    <p> <a href="https://github.com/emnaDebbabi5/abla-captcha-demo" class="github-logo"><i class="fab fa-github"></i> 
+      <span style="vertical-align: middle">See code</span>
+    </a></p>
+
+    <br>
+
+    <p class="dark-txt"> Go to the <a href="captchademo.html" >
+    <span style="vertical-align: middle"> Light mode demo </span>
+
+    </a></p>
+
+    </main>
+    <div id="responseDisplay"></div>
+    <script>
+        function handleS() {
+          // Send the captcha response to the server
+          var siteKey = document.getElementById("abcaptcha").dataset.sitekey;
+          var url = "http://195.154.71.218:8000/captcha/response";
+    
+          fetch(url, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              site: siteKey,
+            }),
+          })
+            .then(function (response) {
+  
+              return response.json();
+            })
+            .then(function (data) {
+
+                window.location.href = "responsepage.html?status=" + encodeURIComponent(data.response_status);
+            })
+            .catch(function (error) {
+              console.error(error);
+              // Handle error case
+            });
+        }
+      </script>
+  </body>
+</html>

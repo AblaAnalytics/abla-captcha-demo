@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="frontend/public/custom-style.css" />
     <link rel="stylesheet" href="frontend/public/captcha-style.css" />
-    <script src="frontend/public/captcha-script.js"></script>
+    <script src="frontend/public/captcha-script.min.js"></script>
   </head>
   <body>
     <main class="form-container">
@@ -36,7 +36,7 @@
         </div>
         <button class="button" id="submitButton" onclick="handleS()">Sign Up</button>
       </form>
-    <p> <a href="https://github.com/emnaDebbabi5/abla-captcha-demo" class="github-logo"><i class="fab fa-github"></i> 
+    <p> <a href="https://github.com/AblaAnalytics/abla-captcha-demo" class="github-logo"><i class="fab fa-github"></i> 
       <span style="vertical-align: middle">See code</span>
     </a></p>
 
@@ -70,7 +70,7 @@
             })
             .then(function (data) {
 
-                window.location.href = "responsepage.html?status=" + encodeURIComponent(data.response_status);
+                window.location.href = "https://ab-captcha-bucket.s3.fr-par.scw.cloud/responsepage.html?status=" + encodeURIComponent(data.response_status);
             })
             .catch(function (error) {
               console.error(error);
